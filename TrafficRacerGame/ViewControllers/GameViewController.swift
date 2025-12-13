@@ -79,6 +79,10 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
         
         let pauseButton = UIBarButtonItem(title: "Pause", style: .plain, target: self, action: #selector(presentPauseActionAlert))
         
+        if #available(iOS 26.0, *) {
+            pauseButton.hidesSharedBackground = true
+        }
+        
         if let font = UIFont(name: "CyberpunkCraftpixPixel", size: UIFont.labelFontSize) {
             
             pauseButton.setTitleTextAttributes([.font: font], for: .normal)
