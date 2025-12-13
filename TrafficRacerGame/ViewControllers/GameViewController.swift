@@ -20,7 +20,7 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
     
     private var enemyCarViews = [EnemyCarView]()
     private var enemySpawnTimer = Timer()
-    private var enemySpawnInterval: TimeInterval = 2
+    private var enemySpawnInterval: TimeInterval = 1
     
     private let scoreLabel = UILabel()
     private var score = 0
@@ -95,7 +95,7 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
         score = 0
         scoreLabel.text = String(self.score)
         
-        enemySpawnInterval = 2
+        enemySpawnInterval = 1
         
         playerCarView.place(on: self.view)
         playerDidAppear.toggle()
@@ -205,7 +205,7 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
     
     @objc private func spawnEnemies() {
         
-        if enemyCarViews.count < 3 {
+        if enemyCarViews.count < 5 {
             
             let enemy = EnemyCarView()
             enemy.place(on: view)
