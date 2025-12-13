@@ -44,6 +44,7 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
     }
     
     func didFinishMovingWithoutCrashing() {
+        enemyCarViews.removeAll { $0.superview == nil }
         
         guard playerDidAppear else { return }
         
@@ -112,12 +113,13 @@ class GameViewController: UIViewController, EnemyCarViewDelegate {
         let startButtonAlert = ActionAlertViewController()
         
         startButtonAlert.addButton(title: "Start", color: .systemGreen) { [weak self] _ in
+            guard let self = self else { return }
             
-            self?.reset()
+            self.reset()
 
-            self?.dismiss(animated: true)
+            self.dismiss(animated: true)
             
-            self?.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.isHidden = false
         }
         
         present(startButtonAlert, animated: true)
